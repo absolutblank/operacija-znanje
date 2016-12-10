@@ -66,7 +66,6 @@ function mat3($a, $b){
         return $izracunaj;
 }
 
-deliverCandy();
 echo('<!DOCTYPE html>
 <html>
 <head>
