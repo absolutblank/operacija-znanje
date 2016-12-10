@@ -3,7 +3,7 @@
 $rezultat = $odogovor = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        if (!empty($_POST['rezultat']) && !empty($_POST['odogovor']){
+        if (!empty($_POST['rezultat']) && !empty($_POST['odogovor'])){
                 $rezultat = test_input($_POST['rezultat']);
                 $odogovor = test_input($_POST['odogovor']);
                 if ($rezultat == $odogovor){
