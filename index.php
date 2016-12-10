@@ -3,11 +3,17 @@
 $rezultat = $odogovor = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        $rezultat = test_input($_POST['rezultat']);
-        $odogovor = test_input($_POST['odogovor']);
-        if ($rezultat == $odogovor){
-                notifyAnswer(True);
-                deliverCandy();
+        if (!empty($_POST['rezultat']) && !empty($_POST['odogovor']){
+                $rezultat = test_input($_POST['rezultat']);
+                $odogovor = test_input($_POST['odogovor']);
+                if ($rezultat == $odogovor){
+                        notifyAnswer(True);
+                        deliverCandy();
+                }
+                else {
+                        notifyAnswer(False);
+                        $rezultat = $odogovor = "";
+                }
         }
         else {
                 notifyAnswer(False);
@@ -34,6 +40,7 @@ function notifyAnswer($tf){
 }
 
 function test_input($data) {
+
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
@@ -84,7 +91,7 @@ echo('
                 <input type="submit" value="Реши"/>
                 <input type="hidden" name="a" value="'.$a.'"/>
                 <input type="hidden" name="b" value="'.$b.'"/>
-                <input type="hidden" name="resenje" value="'.$rezultat.'"/>
+                <input type="hidden" name="rezultat" value="'.$rezultat.'"/>
         </label>
 	</form>
         </div>
