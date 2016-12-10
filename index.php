@@ -25,7 +25,7 @@ if ($a < $b){
 }
 
 function notifyAnswer($tf){
-        if $tf {
+        if ($tf) {
                 echo('Тачно');
         }
         else {
