@@ -1,4 +1,20 @@
 <?php
+
+$rezultat = $odogovor = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        $rezultat = test_input($_POST['rezultat']);
+        $odogovor = test_input($_POST['odogovor']);
+        if ($rezultat == $odogovor){
+                notifyAnswer(True);
+                deliverCandy();
+        }
+        else {
+                notifyAnswer(False);
+                $rezultat = $odogovor = "";
+        }
+}
+
 $i=rand(1,3);
 $a=rand(0,10);
 $b=rand(0,10);
@@ -8,12 +24,28 @@ if ($a < $b){
         $b=$k;
 }
 
+function notifyAnswer($tf){
+        if $tf {
+                echo('Тачно');
+        }
+        else {
+                echo "Нетачно";
+        }
+}
+
+function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+}
+
 function deliverCandy(){
         exec("./giveCandy");
         return True;
 }
 
-function calc_string( $mathString ){
+function calc_string($mathString){
         $doCalc = create_function("", "return (" . $mathString . ");" );
         return $doCalc();
 }
@@ -47,10 +79,13 @@ echo('<!DOCTYPE html>
 <h3>Израчунај:</h3>');
 $rezultat=call_user_func("mat".$i, $a, $b);
 echo('
-<form action="index.php" method="POST">
+<form action="'. htmlspecialchars($_SERVER["PHP_SELF"]) .'" method="POST">
 	<label>
-                <input class="numeric" type="tel" min="0" step="1"/>
+                <input type="text" name="odgovor"/>
                 <input type="submit" value="Реши"/>
+                <input type="hidden" name="a" value="'.$a.'"/>
+                <input type="hidden" name="b" value="'.$b.'"/>
+                <input type="hidden" name="resenje" value="'.$rezultat.'"/>
         </label>
 	</form>
         </div>
