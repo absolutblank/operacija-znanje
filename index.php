@@ -3,23 +3,18 @@
 $rezultat = $odogovor = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        if (!empty($_POST['rezultat']) && !empty($_POST['odogovor'])){
-                $rezultat = test_input($_POST['rezultat']);
-                $odogovor = test_input($_POST['odogovor']);
-                if ($rezultat == $odogovor){
-                        notifyAnswer(True);
-                        deliverCandy();
-                }
-                else {
-                        notifyAnswer(False);
-                        $rezultat = $odogovor = "";
-                }
+        $rezultat = test_input($_POST['rezultat']);
+        $odgovor = test_input($_POST['odgovor']);
+        if ($rezultat == $odgovor){
+                notifyAnswer(True);
+                deliverCandy();
         }
         else {
                 notifyAnswer(False);
-                $rezultat = $odogovor = "";
+                $rezultat = $odgovor = "";
         }
 }
+
 
 $i=rand(1,3);
 $a=rand(0,10);
