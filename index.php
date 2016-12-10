@@ -9,7 +9,7 @@ if ($a < $b){
 }
 
 function deliverCandy(){
-        system("python candyGo.py");
+        exec("./giveCandy");
         return True;
 }
 
