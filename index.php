@@ -7,6 +7,12 @@ if ($a < $b){
         $a=$b;
         $b=$k;
 }
+
+function deliverCandy(){
+        system("python candyGo.py");
+        return True;
+}
+
 function calc_string( $mathString ){
         $doCalc = create_function("", "return (" . $mathString . ");" );
         return $doCalc();
@@ -28,8 +34,7 @@ function mat3($a, $b){
         return $izracunaj;
 }
 
-$rezultat=call_user_func("mat".$i, $a, $b);
-
+deliverCandy();
 echo('<!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +44,9 @@ echo('<!DOCTYPE html>
 <body>
 <div>
 <div>
-<h3>Израчунај:</h3>
+<h3>Израчунај:</h3>');
+$rezultat=call_user_func("mat".$i, $a, $b);
+echo('
 <form action="index.php" method="POST">
 	<label>
                 <input class="numeric" type="tel" min="0" step="1"/>
@@ -47,11 +54,8 @@ echo('<!DOCTYPE html>
         </label>
 	</form>
         </div>
-');
-
-echo("<h2>" . $rezultat ." </h2>");
-echo('</div>
-
+<h2>' . $rezultat . '</h2>
+</div>
 </body>
 </html>
 ');
