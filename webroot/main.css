@@ -1,0 +1,58 @@
+body {
+	/*background: url("images/board.png") no-repeat center top;
+	background-size: 100%;*/
+}
+
+.question-structure {
+	/*padding-top: 30px;
+	color: #fff;*/
+}
+
+.expression, .answer {
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	padding: 0px 15px;
+}
+
+.answer {
+	border: 1px solid #000;
+}
+
+.btn-answer {
+	margin-left: 20px;
+}
+
+.keyboard-list {
+	text-align: center;
+	margin-top: 20px;
+	list-style: none;
+	padding: 0;
+}
+
+.keyboard-list li span {
+	cursor: pointer;
+}
+
+.keyboard-list li:not(:last-child) span {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	margin-bottom: 5px;
+	background: #f9f9f9;
+	border-radius: 5px;
+	border: 1px solid black;
+}
+
+.keyboard-list li:last-child span {
+	display: inline-block;
+	width: 82.5px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: #f9f9f9;
+	border-radius: 5px;
+	border: 1px solid black;
+}
